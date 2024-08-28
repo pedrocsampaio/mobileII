@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class InputTextViewModel {
+class InputTextViewModel extends ChangeNotifier {
   final TextEditingController controller = TextEditingController();
   String labelText;
   String hintText;
 
   InputTextViewModel({
-    this.labelText = "Digite",
-    this.hintText = "",
+    this.labelText = "Enter text",
+    this.hintText = "Type something here...",
   });
 
   void onChanged(String value) {
@@ -21,5 +21,6 @@ class InputTextViewModel {
 
   void dispose() {
     controller.dispose();
+    super.dispose();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class InputTextDisabledViewModel {
+class InputTextDisabledViewModel extends ChangeNotifier {
   final TextEditingController controller = TextEditingController();
   String labelText;
   String hintText;
@@ -16,5 +16,6 @@ class InputTextDisabledViewModel {
 
   void dispose() {
     controller.dispose();
+    super.dispose();
   }
 }

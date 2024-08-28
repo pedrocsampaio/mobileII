@@ -14,7 +14,6 @@ class InputTextErrorViewModel extends ChangeNotifier {
   });
 
   void onChanged(String value) {
-    // Atualiza a propriedade hasError e notifica os ouvintes
     if (value.isEmpty) {
       hasError = true;
     } else {

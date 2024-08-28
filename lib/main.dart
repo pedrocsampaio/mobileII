@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'DesignSystem/Components/InputText/input_text.dart';
 import 'DesignSystem/Components/InputText/input_text_view_model.dart';
 import 'DesignSystem/Components/InputText/input_text_disabled.dart';
@@ -20,17 +21,17 @@ class MyApp extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              ChangeNotifierProvider(
+              ChangeNotifierProvider<InputTextViewModel>(
                 create: (_) => InputTextViewModel(),
                 child: InputTextField(viewModel: InputTextViewModel()),
               ),
               SizedBox(height: 20),
-              ChangeNotifierProvider(
+              ChangeNotifierProvider<InputTextDisabledViewModel>(
                 create: (_) => InputTextDisabledViewModel(),
                 child: InputTextFieldDisabled(viewModel: InputTextDisabledViewModel()),
               ),
               SizedBox(height: 20),
-              ChangeNotifierProvider(
+              ChangeNotifierProvider<InputTextErrorViewModel>(
                 create: (_) => InputTextErrorViewModel(),
                 child: InputTextFieldError(),
               ),
