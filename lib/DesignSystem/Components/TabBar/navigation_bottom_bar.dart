@@ -3,6 +3,17 @@ import 'package:provider/provider.dart';
 import 'navigation_bottom_bar_view_model.dart';
 
 class NavigationBottomBar extends StatelessWidget {
+  final NavigationBottomBarViewModel viewModel;
+
+  const NavigationBottomBar._(this.viewModel);
+
+  static Widget instantiate({required NavigationBottomBarViewModel viewModel}) {
+    return ChangeNotifierProvider<NavigationBottomBarViewModel>.value(
+      value: viewModel,
+      child: NavigationBottomBar._(viewModel),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<NavigationBottomBarViewModel>(context);
@@ -13,35 +24,34 @@ class NavigationBottomBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: _buildCustomIcon(),
-          label: 'label',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: _buildCustomIcon(),
-          label: 'label',
+          label: 'Search',
         ),
         BottomNavigationBarItem(
           icon: _buildCustomIcon(),
-          label: 'label',
+          label: 'Profile',
         ),
       ],
     );
   }
 
-  // Função para criar o ícone personalizado
   Widget _buildCustomIcon() {
     return Container(
-      width: 40, // Largura do quadrado
-      height: 40, // Altura do quadrado
+      width: 40, 
+      height: 40, 
       decoration: BoxDecoration(
-        color: Colors.black, // Cor de fundo do ícone
-        borderRadius: BorderRadius.circular(8), // Borda arredondada
+        color: Colors.black, 
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Center(
         child: Text(
           '24',
           style: TextStyle(
-            color: Colors.white, // Cor do número
-            fontSize: 20, // Tamanho do número
+            color: Colors.white,
+            fontSize: 20, 
             fontWeight: FontWeight.bold,
           ),
         ),

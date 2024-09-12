@@ -4,19 +4,31 @@ import 'package:provider/provider.dart';
 import 'linked_label_view_model.dart';
 
 class LinkedLabel extends StatelessWidget {
+  final LinkedLabelViewModel viewModel;
   final String fullText;
   final String linkedText;
-
-  const LinkedLabel({
+ 
+  const LinkedLabel._({
     Key? key,
+    required this.viewModel,
     required this.fullText,
     required this.linkedText,
   }) : super(key: key);
 
+  static Widget instantiate({
+    required LinkedLabelViewModel viewModel,
+    required String fullText,
+    required String linkedText,
+  }) {
+    return LinkedLabel._(
+      viewModel: viewModel,
+      fullText: fullText,
+      linkedText: linkedText,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<LinkedLabelViewModel>(context);
-
     final linkStartIndex = fullText.indexOf(linkedText);
     final linkEndIndex = linkStartIndex + linkedText.length;
 
