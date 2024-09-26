@@ -1,77 +1,73 @@
 import 'package:flutter/material.dart';
 import 'action_button_view_model.dart';
-import '../../../shared/colors.dart';
-import '../../../shared/styles.dart';
 
 class ActionButton extends StatelessWidget {
   final ActionButtonViewModel viewModel;
 
-  const ActionButton._({super.key, required this.viewModel});
+  const ActionButton._(this.viewModel);
 
   static Widget instantiate({required ActionButtonViewModel viewModel}) {
-    return ActionButton._(viewModel: viewModel);
+    return ActionButton._(viewModel);
   }
 
   @override
   Widget build(BuildContext context) {
-    double horizontalPadding = 32;
-    double verticalPadding = 12;
-    double iconSize = 24;
-    TextStyle buttonTextStyle = button3Semibold;
-    Color buttonColor = lightPrimaryBrandColor;
+    double buttonSize = 32.0;
+    Color buttonColor = Color(0xFFF8D247);
 
     switch (viewModel.size) {
       case ActionButtonSize.large:
-        buttonTextStyle = button1Bold;
-        iconSize = 24;
+        buttonSize = 32.0;
         break;
       case ActionButtonSize.medium:
-        buttonTextStyle = button2Semibold;
-        iconSize = 24;
+        buttonSize = 24.0;
         break;
       case ActionButtonSize.small:
-        buttonTextStyle = button3Semibold;
-        horizontalPadding = 16;
-        iconSize = 16;
+        buttonSize = 16.0;
         break;
-      default:
     }
 
     switch (viewModel.style) {
       case ActionButtonStyle.primary:
-        buttonColor = lightPrimaryBrandColor;
+        buttonColor = Color(0xFFF8D247);
         break;
       case ActionButtonStyle.secondary:
-        buttonColor = lightSecondaryBrandColor;
+        buttonColor = Color(0xFF274FF5);
         break;
       case ActionButtonStyle.tertiary:
-        buttonColor = lightTertiaryBrandColor;
+        buttonColor = Color(0xFFF87147);
         break;
-      default:
     }
 
-    return ElevatedButton(
-      onPressed: viewModel.onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        textStyle: buttonTextStyle,
-        padding: EdgeInsets.symmetric(
-          vertical: verticalPadding,
-          horizontal: horizontalPadding
-        )
+    return Container(
+      decoration: BoxDecoration(
+        color: buttonColor,
+        borderRadius: BorderRadius.circular(24.0),
       ),
-      child: viewModel.icon !=null ?
-      Row(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            viewModel.icon,
-            size: iconSize,
+          if (viewModel.image != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: SizedBox(
+                width: buttonSize / 2,
+                height: buttonSize / 2,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: viewModel.image,
+                ),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.all(2.0), // Adiciona 2 unidades de espaço ao redor do texto
+            child: Text(
+              viewModel.text,
+              style: TextStyle(fontSize: buttonSize),
+            ),
           ),
-          Text(viewModel.text)
         ],
-      ) :
-      Text(viewModel.text),
+      ),
     );
   }
 }

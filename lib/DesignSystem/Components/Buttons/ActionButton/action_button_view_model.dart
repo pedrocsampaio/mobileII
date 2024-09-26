@@ -1,29 +1,42 @@
 import 'package:flutter/material.dart';
 
-enum ActionButtonSize{
-  small,
+// Enum para os tamanhos do botão
+enum ActionButtonSize {
+  large,
   medium,
-  large
+  small,
 }
 
-enum ActionButtonStyle{
+// Enum para os estilos do botão
+enum ActionButtonStyle {
   primary,
   secondary,
-  tertiary
+  tertiary,
 }
 
-class ActionButtonViewModel {
-  final ActionButtonSize size;
-  final ActionButtonStyle style;
-  final String text;
-  final IconData? icon;
-  final Function() onPressed;
+// Classe ViewModel que estende ChangeNotifier
+class ActionButtonViewModel extends ChangeNotifier {
+  ActionButtonStyle style;
+  ActionButtonSize size;
+  String text;
+  Image? image;
 
   ActionButtonViewModel({
-    required this.size,
     required this.style,
+    required this.size,
     required this.text,
-    required this.onPressed,
-    this.icon
+    this.image,
   });
+
+  // Exemplo de método para modificar o estado e notificar os ouvintes
+  void updateText(String newText) {
+    text = newText;
+    notifyListeners();
+  }
+
+  // Exemplo de método para alterar o estilo
+  void updateStyle(ActionButtonStyle newStyle) {
+    style = newStyle;
+    notifyListeners();
+  }
 }

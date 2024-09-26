@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'input_text_view_model.dart';
 
 class InputText extends StatelessWidget {
