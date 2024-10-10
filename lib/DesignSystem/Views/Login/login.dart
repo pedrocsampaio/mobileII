@@ -1,106 +1,133 @@
 import 'package:flutter/material.dart';
-import '../../Components/InputField/input_text_view_model.dart'; // Seu arquivo de view models
-import '../../Components/InputField/input_text.dart'; // Seu widget de input customizado
-import '../../Components/LinkedLabel/linked_label.dart'; // ViewModel para LinkedLabel
-import '../../Components/LinkedLabel/linked_label_view_model.dart'; // Widget LinkedLabel
-
+import '../../Components/InputField/input_text.dart';
+import '../../Components/InputField/input_text_view_model.dart'; 
+import '../../Components/LinkedLabel/linked_label.dart'; 
+import '../../Components/LinkedLabel/linked_label_view_model.dart';
 class LoginPage extends StatelessWidget {
-  final InputTextViewModel emailViewModel;
-  final InputTextViewModel passwordViewModel;
-
-  LoginPage({
-    Key? key,
-  })  : emailViewModel = InputTextViewModel(
-          controller: TextEditingController(),
-          placeholder: 'E-mail',
-          password: false,
-        ),
-        passwordViewModel = InputTextViewModel(
-          controller: TextEditingController(),
-          placeholder: 'Password',
-          password: true,
-        ),
-        super(key: key);
-
-  void _navigateToTerms(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => const TermsPage()), // Chama a página de termos
-    );
-  }
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: false,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+     // Para que tudo ocupe a largura total
           children: [
-            // Imagem no topo
-            Image.asset(
-              'assets/logo.png', // Substitua pelo caminho da sua imagem
-              height: 100,
+            const SizedBox(height: 40),
+
+            Center(
+              child: Image.asset(
+                'lib/DesignSystem/Views/Login/assets/login_image.png',
+              ),
             ),
             const SizedBox(height: 40),
 
-            // Campo de E-mail
-            StyledInputField.instantiate(viewModel: emailViewModel),
-            const SizedBox(height: 16),
-
-            // Campo de Senha
-            StyledInputField.instantiate(viewModel: passwordViewModel),
-            const SizedBox(height: 24),
-
-            // Botão de Login
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Ação do botão de login
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow, // Cor amarela
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                child: const Text(
-                  'Login',
-                  style: TextStyle(color: Colors.black),
-                ),
+            // Campo de Email
+            StyledInputField.instantiate(
+              viewModel: InputTextViewModel(
+                controller: TextEditingController(),
+                placeholder: 'Email',
+                password: false,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
 
-            // Checkbox "Permanecer logado" e LinkedLabel
+            // Campo de Senha
+            StyledInputField.instantiate(
+              viewModel: InputTextViewModel(
+                controller: TextEditingController(),
+                placeholder: 'Password',
+                password: true,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Checkbox e Termos de Serviço
             Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.start, // Alinha os elementos à esquerda
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // Alinha verticalmente no centro
               children: [
-                Checkbox(
-                  value:
-                      false, // Valor inicial, pode ser modificado conforme necessidade
-                  onChanged: (bool? value) {
-                    // Ação ao marcar/desmarcar o checkbox
-                  },
-                ),
-                const SizedBox(
-                    width:
-                        8), // Adiciona um pequeno espaçamento entre o checkbox e o texto
-                Expanded(
-                  child: LinkedLabel.instantiate(
-                    viewModel: LinkedLabelViewModel(
-                      fullText: "I have read and agree to the Terms & Services",
-                      linkedText: "Terms & Services",
-                      onLinkTap: () => _navigateToTerms(
-                          context), // Navega para a página de termos
-                    ),
+                Checkbox(value: false, onChanged: (value) {}),
+                LinkedLabel.instantiate(
+                  viewModel: LinkedLabelViewModel(
+                    fullText: 'I agree with Terms and Services',
+                    linkedText: 'Terms and Services',
+                    onLinkTap: () {
+                      // Ação ao clicar no "terms and services"
+                    },
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 20),
+
+            // Botão de Login principal
+            SizedBox(
+              height: 50,
+              width: double.infinity, // Ocupa toda a largura
+              child: ElevatedButton(
+                onPressed: () {
+                  // Ação de login
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFF8D247), 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'Signup',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Texto "Already Have An Account?"
+            const Center(
+              child: Text(
+                "Already Have An Account?",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+
+            // Botão Login abaixo do texto
+            SizedBox(
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Ação de login
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFF8D247), 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -108,18 +135,3 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class TermsPage extends StatelessWidget {
-  const TermsPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Terms & Services'),
-      ),
-      body: const Center(
-        child: Text('Aqui estão os termos e serviços.'),
-      ),
-    );
-  }
-}
