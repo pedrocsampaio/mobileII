@@ -11,92 +11,81 @@ const TextStyle heading1Light = TextStyle(
 );
 
 const TextStyle heading2Light = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 58,
-  fontWeight: FontWeight.w300,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 1.5
-);
+    fontFamily: 'Inter',
+    fontSize: 58,
+    fontWeight: FontWeight.w300,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 1.5);
 
 const TextStyle heading3Regular = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 46,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 1.5
-);
+    fontFamily: 'Inter',
+    fontSize: 46,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 1.5);
 
 const TextStyle heading4Regular = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 33,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 1.5
-);
+    fontFamily: 'Inter',
+    fontSize: 33,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 1.5);
 
 const TextStyle heading5Regular = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 23,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 1.5
-);
+    fontFamily: 'Inter',
+    fontSize: 23,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 1.5);
 
 const TextStyle subtitle1Regular = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 15,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 0.15
-);
+    fontFamily: 'Inter',
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 0.15);
 
 const TextStyle subtitle2Medium = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13,
-  fontWeight: FontWeight.w500,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 0.1
-);
+    fontFamily: 'Inter',
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 0.1);
 
 const TextStyle paragraph1Regular = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 15,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 0.5
-);
+    fontFamily: 'Inter',
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 0.5);
 
 const TextStyle paragraph2Medium = TextStyle(
-  fontFamily: 'Inter',
-  fontSize: 13,
-  fontWeight: FontWeight.w400,
-  color: normalPrimaryBaseColorLight,
-  letterSpacing: 0.25
-);
+    fontFamily: 'Inter',
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: normalPrimaryBaseColorLight,
+    letterSpacing: 0.25);
 
 const TextStyle label1Semibold = TextStyle(
   fontFamily: 'Inter',
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: FontWeight.w600,
   color: normalPrimaryBaseColorLight,
 );
 
 const TextStyle label2Regular = TextStyle(
   fontFamily: 'Inter',
-  fontSize: 15,
-  height: 16,
+  fontSize: 16,
   fontWeight: FontWeight.w400,
   color: normalPrimaryBaseColorLight,
 );
 
 const TextStyle label2Semibold = TextStyle(
   fontFamily: 'Inter',
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: FontWeight.w600,
   color: normalPrimaryBaseColorLight,
-
 );
-
 
 const TextStyle button1Bold = TextStyle(
   fontFamily: 'Inter',

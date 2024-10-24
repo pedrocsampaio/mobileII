@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'DesignSystem/Views/Login/login.dart';  // Adicione a referência para a sua tela de login
+import 'package:flutter/material.dart';
+import 'Scenes/Login/login.dart'; // Importe a página de login
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Login App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),  // A tela que você quer rodar
+      home: LoginPage(), // Define a LoginPage como a tela inicial
     );
   }
 }
