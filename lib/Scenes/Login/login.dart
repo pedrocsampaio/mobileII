@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/DesignSystem/Components/Buttons/LoadingButton/loading_button.dart';
+import 'package:mobile/DesignSystem/Components/Buttons/LoadingButton/loading_button_view_model.dart';
 import 'login_service.dart';
 import 'login_router.dart';
 import '../../DesignSystem/Components/InputField/input_text.dart';
@@ -6,11 +8,41 @@ import '../../DesignSystem/Components/InputField/input_text_view_model.dart';
 import '../../DesignSystem/Components/LinkedLabel/linked_label.dart';
 import '../../DesignSystem/Components/LinkedLabel/linked_label_view_model.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
 
-  LoginPage({super.key});
+  void _login() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Simulação de chamada de API para login
+      Map<String, dynamic> userData = await LoginService.fetchLogin(
+        emailController.text,
+        passwordController.text,
+      );
+
+      // Navegar para a página de perfil ao fazer login com sucesso
+      LoginRouter.goToProfilePage(context);
+    } catch (e) {
+      // Handle login error
+      print('Login failed: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +88,7 @@ class LoginPage extends StatelessWidget {
                     fullText: 'I agree with Terms and Services',
                     linkedText: 'Terms and Services',
                     onLinkTap: () {
-                      // Ação ao clicar nos "terms and services"
+                      // Ação ao clicar no "terms and services"
                     },
                   ),
                 ),
@@ -64,43 +96,12 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Botão de Login principal
-            SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () async {
-                  try {
-                    // Chama o método fetchLogin
-                    Map<String, dynamic> userData =
-                        await LoginService.fetchLogin(
-                      emailController.text,
-                      passwordController.text,
-                    );
-
-                    // Navega para a página de perfil
-                    LoginRouter.goToProfilePage(context);
-                  } catch (e) {
-                    // Mostra mensagem de erro
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Erro ao fazer login')),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFF8D247),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: const Text(
-                  'Login',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            // Botão de Login com Loading
+            LoadingButton(
+              viewModel: LoadingButtonViewModel(
+                text: 'Login',
+                isLoading: isLoading,
+                onPressed: _login,
               ),
             ),
             const SizedBox(height: 20),
@@ -117,12 +118,12 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
 
-            // Botão Sign up
+            // Botão Sign Up
             SizedBox(
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // Ação para redirecionar ao sign up
+                  // Ação de sign up
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFF8D247),
@@ -140,7 +141,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),

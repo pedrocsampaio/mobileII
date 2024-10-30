@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../DesignSystem/Components/BottomTabBar/bottom_tab_bar.dart';
 import '../../DesignSystem/Components/BottomTabBar/bottom_tab_bar_view_model.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ProfilePage(),
-    );
-  }
-}
+import '../Login/login_router.dart'; // Importa o LoginRouter
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
-  final int currentIndex = 3; //Perfil é o 4 item
+  final int currentIndex = 3; // Perfil é o 4 item
 
   @override
   Widget build(BuildContext context) {
@@ -72,30 +58,18 @@ class ProfilePage extends StatelessWidget {
             ListTile(
               title: const Text('Edit Name'),
               trailing: const Icon(Icons.arrow_forward_ios),
-//              onTap: () {
-
-//              },
             ),
             ListTile(
               title: const Text('Shipping Info'),
               trailing: const Icon(Icons.arrow_forward_ios),
-//              onTap: () {
-
-//              },
             ),
             ListTile(
               title: const Text('Notification'),
               trailing: const Icon(Icons.arrow_forward_ios),
-//              onTap: () {
-
-//              },
             ),
             ListTile(
               title: const Text('Terms & Condition'),
               trailing: const Icon(Icons.arrow_forward_ios),
-//            onTap: () {
-
-//              },
             ),
             const SizedBox(height: 20),
             ListTile(
@@ -103,9 +77,9 @@ class ProfilePage extends StatelessWidget {
                 'Logout',
                 style: TextStyle(color: Colors.red),
               ),
-//             onTap: () {
-
-//              },
+              onTap: () {
+                LoginRouter.goToLoginPage(context);
+              },
             ),
           ],
         ),
@@ -130,9 +104,6 @@ class ProfilePage extends StatelessWidget {
               label: 'label',
             ),
           ],
-//          onIndexChanged: (index) {
-//            // Ação ao mudar de aba
-//          },
         ),
         currentIndex: currentIndex,
       ),
