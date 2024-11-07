@@ -1,12 +1,15 @@
+import 'package:designsystemsampleapp/Scenes/Profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/Scenes/Profile/profile_factory.dart';
 import '../Login/login_factory.dart'; // Certifique-se de importar o LoginFactory
 
 class LoginRouter {
-  static void goToProfilePage(BuildContext context) {
+  static void goToProfilePage(
+      BuildContext context, Map<String, dynamic> userData) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfilePageFactory.create()),
+      MaterialPageRoute(
+        builder: (context) => ProfilePage(userData: userData),
+      ),
     );
   }
 

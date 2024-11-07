@@ -1,5 +1,5 @@
+import 'package:designsystemsampleapp/DesignSystem/Components/Buttons/LoadingButton/loading_button_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/DesignSystem/Components/Buttons/LoadingButton/loading_button_view_model.dart';
 
 class LoadingButton extends StatelessWidget {
   final LoadingButtonViewModel viewModel;

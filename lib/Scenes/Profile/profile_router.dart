@@ -5,7 +5,8 @@ class LoginRouter {
   static void goToProfilePage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProfilePageFactory.create()),
+      MaterialPageRoute(
+          builder: (context) => ProfilePageFactory.create(userData: {})),
     );
   }
 }

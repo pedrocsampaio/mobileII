@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:mobile/DesignSystem/Components/Buttons/LoadingButton/loading_button.dart';
-import 'package:mobile/DesignSystem/Components/Buttons/LoadingButton/loading_button_view_model.dart';
-import 'login_service.dart';
-import 'login_router.dart';
 import '../../DesignSystem/Components/InputField/input_text.dart';
 import '../../DesignSystem/Components/InputField/input_text_view_model.dart';
 import '../../DesignSystem/Components/LinkedLabel/linked_label.dart';
 import '../../DesignSystem/Components/LinkedLabel/linked_label_view_model.dart';
+import 'package:designsystemsampleapp/DesignSystem/Components/Buttons/LoadingButton/loading_button.dart';
+import 'package:designsystemsampleapp/DesignSystem/Components/Buttons/LoadingButton/loading_button_view_model.dart';
+import 'package:flutter/material.dart';
+import 'login_service.dart';
+import 'login_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -26,17 +26,14 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      // Simulação de chamada de API para login
+      // Chama o serviço de login e aguarda a resposta
       Map<String, dynamic> userData = await LoginService.fetchLogin(
         emailController.text,
         passwordController.text,
       );
 
-      // Navegar para a página de perfil ao fazer login com sucesso
-      LoginRouter.goToProfilePage(context);
-    } catch (e) {
-      // Handle login error
-      print('Login failed: $e');
+      // Se o login for bem-sucedido, navega para a página de perfil com os dados do usuário
+      LoginRouter.goToProfilePage(context, userData);
     } finally {
       setState(() {
         isLoading = false;

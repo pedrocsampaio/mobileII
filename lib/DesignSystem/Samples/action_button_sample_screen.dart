@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../Components/Buttons/ActionButton/action_button';
 import '../Components/Buttons/ActionButton/action_button_view_model.dart';
 
-
 class ActionButtonSampleScreen extends StatelessWidget {
   const ActionButtonSampleScreen({Key? key}) : super(key: key);
 
@@ -25,6 +24,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.primary,
                   size: ActionButtonSize.large,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 8),
@@ -33,6 +33,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.primary,
                   size: ActionButtonSize.medium,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 4),
@@ -41,6 +42,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.primary,
                   size: ActionButtonSize.small,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 16),
@@ -51,6 +53,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.secondary,
                   size: ActionButtonSize.large,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 4),
@@ -59,6 +62,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.secondary,
                   size: ActionButtonSize.medium,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 4),
@@ -67,6 +71,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.secondary,
                   size: ActionButtonSize.small,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 16),
@@ -77,6 +82,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.tertiary,
                   size: ActionButtonSize.large,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 4),
@@ -85,6 +91,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.tertiary,
                   size: ActionButtonSize.medium,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: 4),
@@ -93,6 +100,7 @@ class ActionButtonSampleScreen extends StatelessWidget {
                   style: ActionButtonStyle.tertiary,
                   size: ActionButtonSize.small,
                   text: 'Action button',
+                  onPressed: () {},
                 ),
               ),
             ],
